@@ -56,14 +56,19 @@ def test_conversation():
         print(f"{'─' * 60}")
         print(f"You: {msg}")
 
+
+
         # Pause between turns to respect rate limits
         if i > 1:
             time.sleep(5)
 
         result = invoke_with_retry(agent, msg, config)
 
+
+
         ai_msg = result["messages"][-1]
         print(f"\nAgent: {ai_msg.content}")
+
 
         # Print state info
         intent = result.get("intent", "unknown")
